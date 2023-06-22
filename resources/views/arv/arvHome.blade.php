@@ -36,7 +36,7 @@
         </div>
         <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 mt-14">
 
-            <form method="POST" action="{{ route('hamil.attd') }}" method="post" enctype="multipart/form-data">
+            <form method="POST" action="{{ route('arv.attd') }}" method="post" enctype="multipart/form-data">
                 {{ csrf_field() }}
                 <div class="flex items-center justify-center">
                     <label for="form-file"
@@ -82,51 +82,18 @@
         <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg mt-14">
             <div class="grid grid-cols-6 gap-4 mb-4">
                 @for ($i = 1; $i <= $days; $i++)
-                    @if ($absens[$i] == false)
+                    @if ($list_hari[$i] == false)
                         <div class="flex items-center justify-center rounded bg-red-600 h-12">
                             <a class="text-2xl text-gray-400 dark:text-gray-500">{{ $i }}</a>
                         </div>
-                    @else
-                        <div class="flex items-center justify-center rounded bg-lime-300 h-12">
-                            <a class="text-2xl text-gray-400 dark:text-gray-500">{{ $i }}</a>
+                    @elseif ($list_hari[$i] == true)
+                        <div class="flex items-center justify-center rounded bg-lime-500 h-12">
+                            <a href="/arv/attd/show/{{ $user_id }}/{{ $i }}"
+                                class="text-2xl text-white">{{ $i }}</a>
                         </div>
                     @endif
                 @endfor
             </div>
         </div>
-    </div>
-
-    <div class="grid grid-cols-2 gap-4 mb-4">
-        <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-            <p class="text-2xl text-gray-400 dark:text-gray-500">+</p>
-        </div>
-        <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-            <p class="text-2xl text-gray-400 dark:text-gray-500">+</p>
-        </div>
-        <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-            <p class="text-2xl text-gray-400 dark:text-gray-500">+</p>
-        </div>
-        <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-            <p class="text-2xl text-gray-400 dark:text-gray-500">+</p>
-        </div>
-    </div>
-    <div class="flex items-center justify-center h-48 mb-4 rounded bg-gray-50 dark:bg-gray-800">
-        <p class="text-2xl text-gray-400 dark:text-gray-500">+</p>
-    </div>
-    <div class="grid grid-cols-2 gap-4">
-        <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-            <p class="text-2xl text-gray-400 dark:text-gray-500">+</p>
-        </div>
-        <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-            <p class="text-2xl text-gray-400 dark:text-gray-500">+</p>
-        </div>
-        <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-            <p class="text-2xl text-gray-400 dark:text-gray-500">+</p>
-        </div>
-        <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-            <p class="text-2xl text-gray-400 dark:text-gray-500">+</p>
-        </div>
-    </div>
-    </div>
     </div>
 @endsection

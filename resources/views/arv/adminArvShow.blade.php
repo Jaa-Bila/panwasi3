@@ -64,14 +64,15 @@
         <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg mt-14">
             <div class="grid grid-cols-6 gap-4 mb-4">
                 @for ($i = 1; $i <= $days; $i++)
-                    @if (count($absens) > 0)
-                        @foreach ($absens->where('hari', $i) as $absensi)
-                            <div class="flex items-center justify-center rounded bg-lime-500 h-12">
-                                <a class="text-2xl text-white">{{ $absensi->hari }}</a>
-                            </div>
-                        @endforeach
-                    @else
-                        <p>No Batches</P>
+                    @if ($list_hari[$i] == false)
+                        <div class="flex items-center justify-center rounded bg-red-600 h-12">
+                            <a class="text-2xl text-gray-400 dark:text-gray-500">{{ $i }}</a>
+                        </div>
+                    @elseif ($list_hari[$i] == true)
+                        <div class="flex items-center justify-center rounded bg-lime-500 h-12">
+                            <a href="/admin/arv/attd/show/{{ $user_id }}/{{ $i }}"
+                                class="text-2xl text-white">{{ $i }}</a>
+                        </div>
                     @endif
                 @endfor
             </div>

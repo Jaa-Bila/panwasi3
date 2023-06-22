@@ -7,5 +7,24 @@ use Illuminate\Database\Eloquent\Model;
 
 class PartcOat extends Model
 {
+    protected $fillable = [
+        'name',
+        'user_id',
+        'email',
+        'alamat',
+        'notel',
+        'hamilke',
+        'hpht',
+        'hpl',
+        'hb',
+        'desa_id'
+    ];
+
     use HasFactory;
+    protected $dates = ['hpht', 'hpl'];
+
+    public function desa()
+    {
+        return $this->belongsTo('App\Models\Desa', 'desa_id');
+    }
 }
