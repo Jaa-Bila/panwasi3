@@ -9,7 +9,8 @@
             </div>
             <div class="relative px-4 py-10 bg-white shadow-lg sm:rounded-3xl sm:p-20">
                 <div class="max-w-md mx-auto">
-                    <div>
+                    <div class="">
+                        <img class="h-auto w-40 mx-auto mb-2" src="{{ asset('images/logo.jpeg') }}" alt="">
                         <h1 class="text-center text-2xl font-semibold">PANWASI</h1>
                     </div>
                     <div class="divide-y divide-gray-200">

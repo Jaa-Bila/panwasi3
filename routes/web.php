@@ -30,10 +30,11 @@ Auth::routes();
 All Normal Users Routes List
 --------------------------------------------
 --------------------------------------------*/
-Route::middleware(['auth', 'user-access:user'])->group(function () {
+// Route::middleware(['auth', 'user-access:user'])->group(function () {
 
-    Route::get('/home', [HomeController::class, 'index'])->name('home');
-});
+//     Route::get('/home', [HomeController::class, 'index'])->name('home');
+// });
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 /*------------------------------------------
 --------------------------------------------
@@ -49,7 +50,7 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
     Route::get('/admin/hamil', [HamilController::class, 'adminHamil'])->name('admin.hamil');
     Route::get('/admin/hamil/show/{id}', [HamilController::class, 'adminHamilShow'])->name('admin.hamilShow');
     Route::get('/admin/hamil/attd/show/{user_id}/{id}', [HamilController::class, 'adminHamilAttend'])->name('admin.hamilAttend');
-    Route::post('/admin/reg_hamil', [HomeController::class, 'adminReghamil'])->name('admin.reghamil');
+    Route::post('/admin/reg_hamil', [HamilController::class, 'adminReghamil'])->name('admin.reghamil');
 
     Route::get('/admin/remaja', [RemajaController::class, 'adminRemaja'])->name('admin.remaja');
     Route::get('/admin/remaja/show/{id}', [RemajaController::class, 'adminRemajaShow'])->name('admin.remajaShow');

@@ -16,7 +16,7 @@ class ArvList extends Component
         return view('livewire.arv-list', [
             'partcs' => PartcArv::where('name', 'like', '%' . $this->search . '%')
                 ->orderBy('id', 'desc')
-                ->paginate('2')
+                ->paginate('10')
         ]);
     }
 }

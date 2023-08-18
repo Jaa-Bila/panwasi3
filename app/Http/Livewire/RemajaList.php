@@ -16,7 +16,7 @@ class RemajaList extends Component
         return view('livewire.remaja-list', [
             'partcs' => PartcRemaja::where('name', 'like', '%' . $this->search . '%')
                 ->orderBy('id', 'desc')
-                ->paginate('2')
+                ->paginate('10')
         ]);
     }
 }

@@ -35,7 +35,7 @@ class HomeController extends Controller
      */
     public function index(): View
     {
-        return view('home');
+        return view('welcome');
     }
 
     /**
@@ -45,7 +45,17 @@ class HomeController extends Controller
      */
     public function adminHome(): View
     {
-        return view('admin.adminHome');
+        $admin = Auth::user()->email;
+        $hamil = PartcHamil::all();
+        $remaja = PartcRemaja::all();
+        $arv = PartcArv::all();
+        $oat = PartcOat::all();
+        return view('admin.adminHome')
+            ->with('admin', $admin)
+            ->with('hamil', $hamil)
+            ->with('remaja', $remaja)
+            ->with('arv', $arv)
+            ->with('oat', $oat);
     }
 
     /**

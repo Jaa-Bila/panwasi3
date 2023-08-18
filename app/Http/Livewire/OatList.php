@@ -17,7 +17,7 @@ class OatList extends Component
         return view('livewire.oat-list', [
             'partcs' => PartcOat::where('name', 'like', '%' . $this->search . '%')
                 ->orderBy('id', 'desc')
-                ->paginate('2')
+                ->paginate('10')
         ]);
     }
 }

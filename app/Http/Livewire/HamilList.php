@@ -16,7 +16,7 @@ class HamilList extends Component
         return view('livewire.hamil-list', [
             'partcs' => PartcHamil::where('name', 'like', '%' . $this->search . '%')
                 ->orderBy('id', 'desc')
-                ->paginate('2')
+                ->paginate('10')
         ]);
     }
 }
