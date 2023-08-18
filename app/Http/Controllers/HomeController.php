@@ -100,6 +100,63 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+    public function adminarvHome(): View
+    {
+        $admin = Auth::user()->email;
+        $hamil = PartcHamil::all();
+        $remaja = PartcRemaja::all();
+        $arv = PartcArv::all();
+        $oat = PartcOat::all();
+        return view('admin-arv.admin-arvHome')
+            ->with('admin', $admin)
+            ->with('hamil', $hamil)
+            ->with('remaja', $remaja)
+            ->with('arv', $arv)
+            ->with('oat', $oat);
+    }
+
+    /**
+     * Display a registration form.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function adminarvRegister()
+    {
+        $desas = Desa::all();
+        return view('auth.register')->with('desas', $desas);
+    }
+
+    /**
+     * Store a new user.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function adminarvStore(Request $request)
+    {
+        $validatedData = $request->validate([
+            'name' => 'required',
+            'password' => 'required|min:5',
+            'email' => 'required|email|unique:users'
+        ], [
+            'name.required' => 'Name field is required.',
+            'password.required' => 'Password field is required.',
+            'email.required' => 'Email field is required.',
+            'email.email' => 'Email field must be email address.'
+        ]);
+
+        $validatedData['password'] = bcrypt($validatedData['password']);
+
+        $user = User::create($validatedData);
+
+        return back()->with('success_hamil', 'User created successfully.');
+    }
+
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
     public function managerHome(): View
     {
         return view('managerHome');

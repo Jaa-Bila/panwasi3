@@ -129,9 +129,16 @@
                                     aria-selected="false">ARV</button>
                             </li>
                             <li class="mr-2" role="home">
-                                <a href="{{ route('admin.home') }}" class="inline-block p-4 border-b-2 rounded-t-lg"
-                                    id="arv-tab" data-tabs-target="#arv" type="button" role="tab" aria-controls="arv"
-                                    aria-selected="false">Home</a>
+                                @if (Auth::check() && Auth::user()->type == 'admin')
+                                    <a href="{{ route('admin.home') }}" class="inline-block p-4 border-b-2 rounded-t-lg"
+                                        id="arv-tab" data-tabs-target="#arv" type="button" role="tab"
+                                        aria-controls="arv" aria-selected="false">Home</a>
+                                @else
+                                    <a href="{{ route('adminarv.home') }}" class="inline-block p-4 border-b-2 rounded-t-lg"
+                                        id="arv-tab" data-tabs-target="#arv" type="button" role="tab"
+                                        aria-controls="arv" aria-selected="false">Home</a>
+                                @endif
+
                             </li>
                         </ul>
                     </div>

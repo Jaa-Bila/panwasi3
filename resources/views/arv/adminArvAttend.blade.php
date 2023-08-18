@@ -1,4 +1,4 @@
-@extends('layouts.App')
+@extends('layouts.arvApp')
 
 @section('content')
     <div class="p-4 sm:ml-64">

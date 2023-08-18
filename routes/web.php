@@ -71,6 +71,24 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
 
 /*------------------------------------------
 --------------------------------------------
+All Admin-Arv Routes List
+--------------------------------------------
+--------------------------------------------*/
+
+Route::middleware(['auth', 'user-access:admin-arv'])->group(function () {
+
+    Route::get('/admin-arv/home', [HomeController::class, 'adminarvHome'])->name('adminarv.home');
+    Route::get('/admin-arv/register', [HomeController::class, 'adminarvRegister'])->name('adminarv.register');
+    Route::post('/admin-arv/store', [HomeController::class, 'adminarvStore'])->name('adminarv.store');
+
+    Route::get('/admin/arv', [ArvController::class, 'adminArv'])->name('admin.arv');
+    Route::get('/admin/arv/show/{id}', [ArvController::class, 'adminArvShow'])->name('admin.arvShow');
+    Route::get('/admin/arv/attd/show/{user_id}/{id}', [ArvController::class, 'adminArvAttend'])->name('admin.arvAttend');
+    Route::post('/admin/reg_arv', [ArvController::class, 'adminRegarv'])->name('admin.regarv');
+});
+
+/*------------------------------------------
+--------------------------------------------
 All manager Routes List
 --------------------------------------------
 --------------------------------------------*/
